@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body{
+        background-color: #0d1320;
+        overflow: hidden;
+      }
+      #time1 {
+        text-align: center;
+        font-size: 28vh;
+        line-height: 28vh;
+        font-weight: bold;
+        color: #e2ecfd;
+      }
+      #time2 {
+        text-align: center;
+        font-size: 56vh;
+        line-height: 56vh;
+        font-weight: bold;
+        color: #e2ecfd;
+      }
+      #header {
+        display: flex;
+        height: 133px;
+        /* margin: 0 auto; */
+        justify-content: center;
+        align-items: center;
+
+      }
+      .name {
+        margin-left: 15px;
+        text-align: center;
+        height: 48px;
+        font-size: 48px;
+        line-height: 48px;
+        font-weight: bold;
+        color: #ffd700;
+      }
+    </style>
+</head>
+<body>
+    <div id="header">
+      <a target="_blank" href="https://juejin.cn/user/361064433201176">
+        <img height="48px" width="177.46px" src="./juejin.svg">
+      </a>
+      <a target="_blank" href="https://space.bilibili.com/250884890">
+        <img height="48px" width="177.46px" src="./bili.svg">
+      </a>
+      <a target="_blank" href="https://github.com/withoutmelv">
+        <img height="48px" width="177.46px" src="./github.svg">
+      </a>
+      <span class="name">Withoutmelv</span>
+    </div>
+    <div id="time1"></div>
+    <div id="time2"></div>
+</body>
+<script src="./dayjs.min.js"></script>
+<script>
+  const week = ['周日','周一','周二','周三','周四','周五','周六'];
+  let count = 0;
+  const showTime = () => {
+    const moth = dayjs(Date.now()).format('MM-DD');
+    const weekDay = week[dayjs().day()];
+    time1.innerHTML = moth + ' ' + weekDay;
+    const hour = dayjs(Date.now()).format('HH');
+    const minute = dayjs(Date.now()).format('mm');
+    time2.innerHTML = hour + `<span id="twinkle">:</span>` + minute;
+  };
+  showTime();
+  setInterval(() => {
+    showTime();
+    count++;
+    if (count % 2) {
+      twinkle.style.color = '#0d1320';
+    } else {
+      twinkle.style.color = '#e2ecfd';
+    }
+  }, 1000);
+  twinkle
+</script>
+</html>
